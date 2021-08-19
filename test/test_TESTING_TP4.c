@@ -1,8 +1,5 @@
 #include "PCD8544.h"
 #include "unity.h"
-
-/*Dentro de aca poner los protipos
-de las funciones*/
 #include "mock_sapi.h"
 
 /*mock_sapi.h*/
