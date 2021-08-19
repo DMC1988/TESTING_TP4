@@ -1,3 +1,4 @@
+
 #include "PCD8544.h"
 #include "unity.h"
 #include "mock_sapi.h"
@@ -21,11 +22,11 @@ void tearDown(void){
 /brief  Testeo de escritura de dato en el display.
 */
 void test_writeToPCD8544_isData(void){
-    _Bool ret;
+    int ret;
 
     ret = writeToPCD8544(0x21, isDATA);
 
-    TEST_ASSERT_EQUAL_BOOL(SUCCESS, ret);
+    TEST_ASSERT_EQUAL_UINT8(SUCCESS, ret);
 }
 
 
@@ -33,11 +34,11 @@ void test_writeToPCD8544_isData(void){
 /brief  Testeo de escritura de comando en el display.
 */
 void test_writeToPCD8544_isCMD(void){
-    _Bool ret;
+    int ret;
 
     ret = writeToPCD8544(0x21, isCMD);
 
-    TEST_ASSERT_EQUAL_BOOL(SUCCESS, ret);
+    TEST_ASSERT_EQUAL_UINT8(SUCCESS, ret);
 }
 
 
@@ -45,11 +46,11 @@ void test_writeToPCD8544_isCMD(void){
 /brief  Testeo de inicialización de display.
 */
 void test_initPCD8544(void){
-    _Bool ret;
+    int ret;
 
     ret = initPCD8544();
 
-    TEST_ASSERT_EQUAL_BOOL(SUCCESS, ret);
+    TEST_ASSERT_EQUAL_uint(SUCCESS, ret);
 
 }
 

@@ -6,6 +6,7 @@
 
 #include <sapi.h>
 #include <font.h>
+#include "stdbool.h"
 
 #ifndef PRE_INGRESO_PROYPCOMM_INC_PCD8544_H_
 #define PRE_INGRESO_PROYPCOMM_INC_PCD8544_H_

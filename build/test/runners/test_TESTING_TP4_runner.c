@@ -2,6 +2,8 @@
 
 /*=======Automagically Detected Files To Include=====*/
 #include "unity.h"
+#include "cmock.h"
+#include "mock_sapi.h"
 
 int GlobalExpectCount;
 int GlobalVerifyOrder;
@@ -12,19 +14,9 @@ extern void setUp(void);
 extern void tearDown(void);
 extern void test_writeToPCD8544_isData(void);
 extern void test_writeToPCD8544_isCMD(void);
-extern void test_resetPCD8544(void);
 extern void test_initPCD8544(void);
 extern void test_clearPCD8544(void);
-extern void test_updateScrnPCD8544(void);
-extern void test_setTxtPosPCD8544(void);
-extern void test_setPxlPosPCD8544(void);
-extern void test_drawPxlPCD8544(void);
-extern void test_wrtCharPCD8544(void);
 extern void test_wrtStrPCD8544(void);
-extern void test_invClrPCD8544(void);
-extern void test_setAllPxlPCD8544(void);
-extern void test_drawImgPCD8544(void);
-extern void test_clrTxtPosPCD8544(void);
 
 
 /*=======Mock Management=====*/
@@ -33,12 +25,15 @@ static void CMock_Init(void)
   GlobalExpectCount = 0;
   GlobalVerifyOrder = 0;
   GlobalOrderError = NULL;
+  mock_sapi_Init();
 }
 static void CMock_Verify(void)
 {
+  mock_sapi_Verify();
 }
 static void CMock_Destroy(void)
 {
+  mock_sapi_Destroy();
 }
 
 /*=======Test Reset Options=====*/
@@ -89,21 +84,12 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 int main(void)
 {
   UnityBegin("test_TESTING_TP4.c");
-  run_test(test_writeToPCD8544_isData, "test_writeToPCD8544_isData", 20);
-  run_test(test_writeToPCD8544_isCMD, "test_writeToPCD8544_isCMD", 28);
-  run_test(test_resetPCD8544, "test_resetPCD8544", 36);
-  run_test(test_initPCD8544, "test_initPCD8544", 44);
-  run_test(test_clearPCD8544, "test_clearPCD8544", 52);
-  run_test(test_updateScrnPCD8544, "test_updateScrnPCD8544", 61);
-  run_test(test_setTxtPosPCD8544, "test_setTxtPosPCD8544", 69);
-  run_test(test_setPxlPosPCD8544, "test_setPxlPosPCD8544", 76);
-  run_test(test_drawPxlPCD8544, "test_drawPxlPCD8544", 84);
-  run_test(test_wrtCharPCD8544, "test_wrtCharPCD8544", 92);
-  run_test(test_wrtStrPCD8544, "test_wrtStrPCD8544", 100);
-  run_test(test_invClrPCD8544, "test_invClrPCD8544", 108);
-  run_test(test_setAllPxlPCD8544, "test_setAllPxlPCD8544", 117);
-  run_test(test_drawImgPCD8544, "test_drawImgPCD8544", 125);
-  run_test(test_clrTxtPosPCD8544, "test_clrTxtPosPCD8544", 133);
+  run_test(test_writeToPCD8544_isData, "test_writeToPCD8544_isData", 24);
+  run_test(test_writeToPCD8544_isCMD, "test_writeToPCD8544_isCMD", 36);
+  run_test(test_initPCD8544, "test_initPCD8544", 48);
+  run_test(test_clearPCD8544, "test_clearPCD8544", 61);
+  run_test(test_wrtStrPCD8544, "test_wrtStrPCD8544", 91);
 
+  CMock_Guts_MemFreeFinal();
   return UnityEnd();
 }

@@ -18,7 +18,7 @@ uint16_t cacheMemIndex = 0;
  * @brief Inicializar los puertos necesarios y el display.
  * @return _Bool 1 incializacion fallida, 0 inicializacion completa.
  */
-_Bool initPCD8544(){
+bool initPCD8544(){
 
 	//Inicializo los pines de conexion al LCD
 	gpioInit(RST_PCD8544, GPIO_OUTPUT);
@@ -81,7 +81,7 @@ void resetPCD8544(){
  * @param isData Booleano para indicar si es dato(1) o comando(0).
  * @return _Bool 1 escritura fallida,  0 escritura realizada.
  */
-_Bool writeToPCD8544(uint8_t data, bool_t isData){
+bool writeToPCD8544(uint8_t data, bool isData){
 
 	//CE=0
 	gpioWrite(CE_PCD8544, OFF);
@@ -117,7 +117,7 @@ _Bool writeToPCD8544(uint8_t data, bool_t isData){
  * @brief Borra toda la pantalla.
  * @return _Bool 1 borrado fallido, 0 borrado completo.
  */
-_Bool clearPCD8544(void){
+bool clearPCD8544(void){
 	//Posicion (0,0)
 	setTxtPosPCD8544(0,0);
 
@@ -137,7 +137,7 @@ _Bool clearPCD8544(void){
  * @brief Actualiza la pantalla del display con lo cargado en la memoria cache.
  * @return _Bool 1 actualizacion fallida, 0 actualziacion completa.
  */
-_Bool updateScrnPCD8544(void){
+bool updateScrnPCD8544(void){
 	uint16_t i;
 
 	//Posisción (0,0) del LCD.
@@ -157,7 +157,7 @@ _Bool updateScrnPCD8544(void){
  * @param y entero indicando la posicion x del pixel 0 <= y <= 13 columnas
  * @return _Bool 1 seteo fuera de rango, 0 seteo correcto.
  * */
-_Bool setTxtPosPCD8544(uint8_t x, uint8_t y){
+bool setTxtPosPCD8544(uint8_t x, uint8_t y){
 
 	  if ((y >= MAXNROWS) ||
 	      (x >= (MAXNCOLS / 6))) {
@@ -186,7 +186,7 @@ _Bool setTxtPosPCD8544(uint8_t x, uint8_t y){
  * @param y entero indicando la posicion y del pixel 0 < y < 47
  * @return _Bool 1 seteo fuera de rango, 0 seteo correcto.
  **/
-_Bool setPxlPosPCD8544(uint8_t x, uint8_t y){
+bool setPxlPosPCD8544(uint8_t x, uint8_t y){
 
 	if ((x >= (MAXNROWS * 8)) ||
 	      (y >=  MAXNCOLS)) {
@@ -223,7 +223,7 @@ void drawPxlPCD8544(uint8_t x, uint8_t y){
  *@brief Escribe un caracter en pantalla.
  *@param character caracter a escribir.
  * */
-_Bool wrtCharPCD8544(char character)
+bool wrtCharPCD8544(char character)
 {
   uint8_t i = 0;
 

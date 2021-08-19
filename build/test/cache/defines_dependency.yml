@@ -1,1 +1,5 @@
---- {}
+---
+build/test/mocks/mock_sapi.c:
+- TEST
+src/PCD8544.c:
+- TEST
