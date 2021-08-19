@@ -1,0 +1,74 @@
+---
+:source:
+  :path: test
+  :file: test_TESTING_TP4.c
+:successes: []
+:failures:
+- :test: test_writeToPCD8544_isData
+  :line: 21
+  :message: Empezamos
+  :unity_test_time: 0
+- :test: test_writeToPCD8544_isCMD
+  :line: 29
+  :message: Empezamos
+  :unity_test_time: 0
+- :test: test_resetPCD8544
+  :line: 37
+  :message: Empezamos
+  :unity_test_time: 0
+- :test: test_initPCD8544
+  :line: 45
+  :message: Empezamos
+  :unity_test_time: 0
+- :test: test_clearPCD8544
+  :line: 53
+  :message: Empezamos
+  :unity_test_time: 0
+- :test: test_updateScrnPCD8544
+  :line: 62
+  :message: Empezamos
+  :unity_test_time: 0
+- :test: test_setTxtPosPCD8544
+  :line: 70
+  :message: Empezamos
+  :unity_test_time: 0
+- :test: test_setPxlPosPCD8544
+  :line: 77
+  :message: Empezamos
+  :unity_test_time: 0
+- :test: test_drawPxlPCD8544
+  :line: 85
+  :message: Empezamos
+  :unity_test_time: 0
+- :test: test_wrtCharPCD8544
+  :line: 93
+  :message: Empezamos
+  :unity_test_time: 0
+- :test: test_wrtStrPCD8544
+  :line: 101
+  :message: Empezamos
+  :unity_test_time: 0
+- :test: test_invClrPCD8544
+  :line: 109
+  :message: Empezamos
+  :unity_test_time: 0
+- :test: test_setAllPxlPCD8544
+  :line: 118
+  :message: Empezamos
+  :unity_test_time: 0
+- :test: test_drawImgPCD8544
+  :line: 126
+  :message: Empezamos
+  :unity_test_time: 0
+- :test: test_clrTxtPosPCD8544
+  :line: 134
+  :message: Empezamos
+  :unity_test_time: 0
+:ignores: []
+:counts:
+  :total: 15
+  :passed: 0
+  :failed: 15
+  :ignored: 0
+:stdout: []
+:time: 0.0018831460001820233
