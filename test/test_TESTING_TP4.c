@@ -45,7 +45,6 @@ void test_writeToPCD8544_isCMD(void){
 /brief  Testeo de inicialización de display.
 */
 void test_initPCD8544(void){
-    
     _Bool ret;
 
     ret = initPCD8544();
@@ -59,7 +58,7 @@ void test_initPCD8544(void){
 /brief  Testeo de borrado de pantalla.
 */
 void test_clearPCD8544(void){
-    __UINT16_TYPE__ i = 0;
+    uint16_t i = 0;
 
     clearPCD8544();
 
@@ -76,7 +75,6 @@ void test_clearPCD8544(void){
 /brief  Testeo de borrado de pantalla.
 */
 void test_clearPCD8544(void){
-    
      _Bool ret;
 
     ret = clearPCD8544();
