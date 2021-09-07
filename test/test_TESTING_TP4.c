@@ -99,5 +99,5 @@ void test_wrtStrPCD8544(void){
 
     nChar =  wrtStrPCD8544(str);
 
-    TEST_ASSERT_EQUAL_UINT8(sizeof(str), nChar);
+    TEST_ASSERT_EQUAL_UINT8(sizeof(str), nChar+1);
 }
