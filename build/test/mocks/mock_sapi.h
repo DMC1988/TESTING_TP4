@@ -29,8 +29,8 @@ void gpioWrite_CMockIgnore(void);
 #define gpioWrite_StopIgnore() gpioWrite_CMockStopIgnore()
 void gpioWrite_CMockStopIgnore(void);
 #define gpioWrite_Expect(cmock_arg1, cmock_arg2) gpioWrite_CMockExpect(__LINE__, cmock_arg1, cmock_arg2)
-void gpioWrite_CMockExpect(UNITY_LINE_TYPE cmock_line, gpioMap_t cmock_arg1, _Bool cmock_arg2);
-typedef void (* CMOCK_gpioWrite_CALLBACK)(gpioMap_t cmock_arg1, _Bool cmock_arg2, int cmock_num_calls);
+void gpioWrite_CMockExpect(UNITY_LINE_TYPE cmock_line, int cmock_arg1, _Bool cmock_arg2);
+typedef void (* CMOCK_gpioWrite_CALLBACK)(int cmock_arg1, _Bool cmock_arg2, int cmock_num_calls);
 void gpioWrite_AddCallback(CMOCK_gpioWrite_CALLBACK Callback);
 void gpioWrite_Stub(CMOCK_gpioWrite_CALLBACK Callback);
 #define gpioWrite_StubWithCallback gpioWrite_Stub
@@ -39,8 +39,8 @@ void gpioInit_CMockIgnore(void);
 #define gpioInit_StopIgnore() gpioInit_CMockStopIgnore()
 void gpioInit_CMockStopIgnore(void);
 #define gpioInit_Expect(cmock_arg1, cmock_arg2) gpioInit_CMockExpect(__LINE__, cmock_arg1, cmock_arg2)
-void gpioInit_CMockExpect(UNITY_LINE_TYPE cmock_line, gpioMap_t cmock_arg1, _Bool cmock_arg2);
-typedef void (* CMOCK_gpioInit_CALLBACK)(gpioMap_t cmock_arg1, _Bool cmock_arg2, int cmock_num_calls);
+void gpioInit_CMockExpect(UNITY_LINE_TYPE cmock_line, int cmock_arg1, _Bool cmock_arg2);
+typedef void (* CMOCK_gpioInit_CALLBACK)(int cmock_arg1, _Bool cmock_arg2, int cmock_num_calls);
 void gpioInit_AddCallback(CMOCK_gpioInit_CALLBACK Callback);
 void gpioInit_Stub(CMOCK_gpioInit_CALLBACK Callback);
 #define gpioInit_StubWithCallback gpioInit_Stub
@@ -64,6 +64,16 @@ typedef void (* CMOCK_delay_CALLBACK)(int cmock_arg1, int cmock_num_calls);
 void delay_AddCallback(CMOCK_delay_CALLBACK Callback);
 void delay_Stub(CMOCK_delay_CALLBACK Callback);
 #define delay_StubWithCallback delay_Stub
+#define spiWrite_Ignore() spiWrite_CMockIgnore()
+void spiWrite_CMockIgnore(void);
+#define spiWrite_StopIgnore() spiWrite_CMockStopIgnore()
+void spiWrite_CMockStopIgnore(void);
+#define spiWrite_Expect(cmock_arg1, cmock_arg2, cmock_arg3) spiWrite_CMockExpect(__LINE__, cmock_arg1, cmock_arg2, cmock_arg3)
+void spiWrite_CMockExpect(UNITY_LINE_TYPE cmock_line, int cmock_arg1, char* cmock_arg2, int cmock_arg3);
+typedef void (* CMOCK_spiWrite_CALLBACK)(int cmock_arg1, char* cmock_arg2, int cmock_arg3, int cmock_num_calls);
+void spiWrite_AddCallback(CMOCK_spiWrite_CALLBACK Callback);
+void spiWrite_Stub(CMOCK_spiWrite_CALLBACK Callback);
+#define spiWrite_StubWithCallback spiWrite_Stub
 
 #if defined(__GNUC__) && !defined(__ICC) && !defined(__TMS470__)
 #if __GNUC__ > 4 || (__GNUC__ == 4 && (__GNUC_MINOR__ > 6 || (__GNUC_MINOR__ == 6 && __GNUC_PATCHLEVEL__ > 0)))

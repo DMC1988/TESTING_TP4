@@ -4,11 +4,12 @@
  * Version: 1
  *===========================================================================*/
 
-#include <PCD8544.h>
+#include "PCD8544.h"
 #include <font.h>
+#include "stdbool.h" 
 
 // @var Memoria cache 6*84 = 504
-static uint8_t cacheMemLcd[SIZEMEM];
+uint8_t cacheMemLcd[SIZEMEM];
 
 
 // @var Indice de la memoeria cache
@@ -26,7 +27,7 @@ bool initPCD8544(){
 	gpioInit(CE_PCD8544, GPIO_OUTPUT);
 
 	//Inicializo el SPI
-	spiConfig( SPI0 );
+	spiConfig(SPI0);
 
 	//Reset del LCD.
 	resetPCD8544();
@@ -168,7 +169,7 @@ bool setTxtPosPCD8544(uint8_t x, uint8_t y){
 
 	//set de instrucciones normal
 	//direccionamiento horizontal
-	writeToPCD8544(0x20,isCMD){}
+	writeToPCD8544(0x20,isCMD);
 
 	//Posición y
 	writeToPCD8544(0x80 | (y*6),isCMD);
@@ -265,7 +266,7 @@ uint8_t wrtStrPCD8544(char *str){
  *@brief Invierte los colores del LCD.
  *@param inv Bool para activar inversión de colores o no.
  */
-void invClrPCD8544(bool_t inv){
+void invClrPCD8544(bool inv){
 	//Set de instrucciones reducido
 	writeToPCD8544(0x20,isCMD);
 	if(inv){writeToPCD8544(0x0D, isCMD);}
@@ -277,7 +278,7 @@ void invClrPCD8544(bool_t inv){
  * @param all Bool para activar todos los pixels o no.
  */
 
-void setAllPxlPCD8544(bool_t all){
+void setAllPxlPCD8544(bool all){
 	writeToPCD8544(0x20,isCMD);
 
 	if(all){writeToPCD8544(0x09, isCMD);}

@@ -1,9 +1,26 @@
 #include "build/test/mocks/mock_sapi.h"
 #include "/var/lib/gems/2.5.0/gems/ceedling-0.31.1/vendor/unity/src/unity.h"
+#include "src/font.h"
 #include "src/PCD8544.h"
 
 
+extern uint8_t cacheMemLcd[(6 * 84)];
+
+
+
 void setUp(void){
+
+
+
+    gpioWrite_CMockIgnore();
+
+    gpioInit_CMockIgnore();
+
+    spiConfig_CMockIgnore();
+
+    delay_CMockIgnore();
+
+    spiWrite_CMockIgnore();
 
 
 
@@ -25,7 +42,11 @@ void tearDown(void){
 
 
 
+
+
 void test_writeToPCD8544_isData(void){
+
+
 
     int ret;
 
@@ -39,7 +60,7 @@ void test_writeToPCD8544_isData(void){
 
    ((void *)0)
 
-   ), (UNITY_UINT)(29), UNITY_DISPLAY_STYLE_UINT8);
+   ), (UNITY_UINT)(40), UNITY_DISPLAY_STYLE_UINT8);
 
 }
 
@@ -55,6 +76,8 @@ void test_writeToPCD8544_isData(void){
 
 void test_writeToPCD8544_isCMD(void){
 
+
+
     int ret;
 
 
@@ -67,7 +90,7 @@ void test_writeToPCD8544_isCMD(void){
 
    ((void *)0)
 
-   ), (UNITY_UINT)(41), UNITY_DISPLAY_STYLE_UINT8);
+   ), (UNITY_UINT)(53), UNITY_DISPLAY_STYLE_UINT8);
 
 }
 
@@ -91,7 +114,11 @@ void test_initPCD8544(void){
 
 
 
-    TEST_ASSERT_EQUAL_uint(0, ret);
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT8 )((0)), (UNITY_INT)(UNITY_UINT8 )((ret)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(65), UNITY_DISPLAY_STYLE_UINT8);
 
 
 
@@ -117,7 +144,7 @@ void test_clearPCD8544(void){
 
 
 
-    for(i = 0; i < (6 * 84), i++){
+    for(i = 0; i < (6 * 84); i++){
 
 
 
@@ -125,7 +152,7 @@ void test_clearPCD8544(void){
 
         ((void *)0)
 
-        ), (UNITY_UINT)(68), UNITY_DISPLAY_STYLE_UINT8);
+        ), (UNITY_UINT)(80), UNITY_DISPLAY_STYLE_UINT8);
 
 
 
@@ -145,9 +172,13 @@ void test_clearPCD8544(void){
 
 
 
-void test_clearPCD8544(void){
+void test_clearPCD8544_ret(void){
 
-     _Bool ret;
+    
+
+   _Bool 
+
+        ret;
 
 
 
@@ -155,7 +186,11 @@ void test_clearPCD8544(void){
 
 
 
-    TEST_ASSERT_EQUAL_BOOL(0, ret);
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT8 )((0)), (UNITY_INT)(UNITY_UINT8 )((ret)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(95), UNITY_DISPLAY_STYLE_UINT8);
 
 
 
@@ -187,6 +222,6 @@ void test_wrtStrPCD8544(void){
 
    ((void *)0)
 
-   ), (UNITY_UINT)(97), UNITY_DISPLAY_STYLE_UINT8);
+   ), (UNITY_UINT)(109), UNITY_DISPLAY_STYLE_UINT8);
 
 }

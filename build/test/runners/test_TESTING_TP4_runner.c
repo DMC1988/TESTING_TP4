@@ -16,6 +16,7 @@ extern void test_writeToPCD8544_isData(void);
 extern void test_writeToPCD8544_isCMD(void);
 extern void test_initPCD8544(void);
 extern void test_clearPCD8544(void);
+extern void test_clearPCD8544_ret(void);
 extern void test_wrtStrPCD8544(void);
 
 
@@ -84,11 +85,12 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 int main(void)
 {
   UnityBegin("test_TESTING_TP4.c");
-  run_test(test_writeToPCD8544_isData, "test_writeToPCD8544_isData", 24);
-  run_test(test_writeToPCD8544_isCMD, "test_writeToPCD8544_isCMD", 36);
-  run_test(test_initPCD8544, "test_initPCD8544", 48);
-  run_test(test_clearPCD8544, "test_clearPCD8544", 61);
-  run_test(test_wrtStrPCD8544, "test_wrtStrPCD8544", 91);
+  run_test(test_writeToPCD8544_isData, "test_writeToPCD8544_isData", 34);
+  run_test(test_writeToPCD8544_isCMD, "test_writeToPCD8544_isCMD", 47);
+  run_test(test_initPCD8544, "test_initPCD8544", 60);
+  run_test(test_clearPCD8544, "test_clearPCD8544", 73);
+  run_test(test_clearPCD8544_ret, "test_clearPCD8544_ret", 90);
+  run_test(test_wrtStrPCD8544, "test_wrtStrPCD8544", 103);
 
   CMock_Guts_MemFreeFinal();
   return UnityEnd();

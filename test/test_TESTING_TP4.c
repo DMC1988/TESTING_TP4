@@ -1,16 +1,18 @@
 
 #include "PCD8544.h"
+#include "font.h"
 #include "unity.h"
-#include "mock_sapi.h"
+#include "mock_sapi.h" 
 
-/*mock_sapi.h*/
+extern uint8_t cacheMemLcd[SIZEMEM];
 
-/*
-    /brief Función de incialización que se llama antes de cada prueba.
-           Configura todos los parametros encesarios de las funciones
-           a testear.
-*/
 void setUp(void){
+    
+    gpioWrite_Ignore();
+    gpioInit_Ignore();
+    spiConfig_Ignore();
+    delay_Ignore();
+    spiWrite_Ignore();
 
 }
 
@@ -18,10 +20,12 @@ void tearDown(void){
 
 }
 
+
 /*
 /brief  Testeo de escritura de dato en el display.
 */
 void test_writeToPCD8544_isData(void){
+    
     int ret;
 
     ret = writeToPCD8544(0x21, isDATA);
@@ -34,8 +38,9 @@ void test_writeToPCD8544_isData(void){
 /brief  Testeo de escritura de comando en el display.
 */
 void test_writeToPCD8544_isCMD(void){
+    
     int ret;
-
+   
     ret = writeToPCD8544(0x21, isCMD);
 
     TEST_ASSERT_EQUAL_UINT8(SUCCESS, ret);
@@ -50,7 +55,7 @@ void test_initPCD8544(void){
 
     ret = initPCD8544();
 
-    TEST_ASSERT_EQUAL_uint(SUCCESS, ret);
+    TEST_ASSERT_EQUAL_UINT8(SUCCESS, ret);
 
 }
 
@@ -63,7 +68,7 @@ void test_clearPCD8544(void){
 
     clearPCD8544();
 
-    for(i = 0; i < SIZEMEM, i++){
+    for(i = 0; i < SIZEMEM; i++){
 
          TEST_ASSERT_EQUAL_UINT8(0, cacheMemLcd[i]);
    
@@ -75,12 +80,12 @@ void test_clearPCD8544(void){
 /*
 /brief  Testeo de borrado de pantalla.
 */
-void test_clearPCD8544(void){
-     _Bool ret;
+void test_clearPCD8544_ret(void){
+    bool ret;
 
     ret = clearPCD8544();
 
-    TEST_ASSERT_EQUAL_BOOL(SUCCESS, ret);
+    TEST_ASSERT_EQUAL_UINT8(SUCCESS, ret);
 
 }
 
